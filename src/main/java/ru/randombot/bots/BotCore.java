@@ -5,9 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.randombot.bots.Services.CreateMessageService;
 
-
-import java.util.Random;
-
 public class BotCore extends TelegramLongPollingBot {
 
     CreateMessageService createMessageService = new CreateMessageService();
