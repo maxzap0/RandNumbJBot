@@ -7,9 +7,10 @@ import java.util.Random;
 
 public class CreateMessageService {
 
-    private final String startMessage = "Привет! Этот бот выдаёт случайное число. " +
-            "\nВведите верхнюю границу числа которую хотите получить. " +
-            "\nПриятного использования.";
+    private final String startMessage = """
+            Привет! Этот бот выдаёт случайное число.\s
+            Введите верхнюю границу числа которую хотите получить.\s
+            Приятного использования.""";
 
     public SendMessage startMessage(Update update) {
         return createTextMessage(update, startMessage);
@@ -21,7 +22,7 @@ public class CreateMessageService {
         String mess;
         try {
             maxRand = Integer.parseInt(update.getMessage().getText());
-            randNumb = new Random().nextLong(maxRand);
+            randNumb = new Random().nextLong(maxRand+1);
             mess = String.valueOf(randNumb);
         } catch (Exception e) {
             mess="Некорректный ввод";
