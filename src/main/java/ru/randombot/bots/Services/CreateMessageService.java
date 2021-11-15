@@ -7,10 +7,9 @@ import java.util.Random;
 
 public class CreateMessageService {
 
-    private final String startMessage = """
-            Привет! Этот бот выдаёт случайное число.
-            Введите верхнюю границу числа которую хотите получить.
-            Приятного использования.""";
+    private final String startMessage = "Привет! Этот бот выдаёт случайное число. " +
+            "\nВведите верхнюю границу числа которую хотите получить. " +
+            "\nПриятного использования.";
 
     public SendMessage startMessage(Update update) {
         return createTextMessage(update, startMessage);
