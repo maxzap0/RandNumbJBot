@@ -32,14 +32,17 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>RunApp</mainClass>
-                            <name>worker</name>
+                            <mainClass>ru.randombot.RunApp</mainClass>
+                            <name>workerBot</name>
                         </program>
                     </programs>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase><goals><goal>assemble</goal></goals>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
