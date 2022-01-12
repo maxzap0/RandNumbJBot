@@ -1,33 +1,23 @@
 package ru.randombot.bots;
 
+import lombok.SneakyThrows;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.randombot.bots.Services.CreateMessageService;
+import ru.randombot.bots.services.CreateMessageService;
 
 public class BotCore extends TelegramLongPollingBot {
 
     CreateMessageService createMessageService = new CreateMessageService();
 
     @Override
+    @SneakyThrows
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
 
-            switch (update.getMessage().getText()) {
-                case "/start":
-                    try {
-                        execute(createMessageService.startMessage(update));
-                    } catch (TelegramApiException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                default:
-                    try {
-                        execute(createMessageService.createRandomLong(update));
-                    } catch (TelegramApiException e) {
-                        e.printStackTrace();
-                    }
-                    break;
+            switch (update.getMessage().getText().toLowerCase()) {
+                case "/start" -> execute(createMessageService.startMessage(update));
+                case "/time" -> execute(createMessageService.createTime(update));
+                default -> execute(createMessageService.createRandomLong(update));
             }
         }
     }

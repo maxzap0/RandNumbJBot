@@ -1,8 +1,9 @@
-package ru.randombot.bots.Services;
+package ru.randombot.bots.services;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.time.LocalTime;
 import java.util.Random;
 
 public class CreateMessageService {
@@ -35,6 +36,13 @@ public class CreateMessageService {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));
         sendMessage.setText(text);
+        return sendMessage;
+    }
+
+    public SendMessage createTime(Update update) {
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));
+        sendMessage.setText("time to drink tea... "+ LocalTime.now());
         return sendMessage;
     }
 
